@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * RationRebalance — "Grain Ledger" design system.
+ * Warm paper/cream surfaces, ration-green, turmeric amber, ink text.
+ * All colors are semantic tokens in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: var(--font-display-family);
+  --font-body: var(--font-body-family);
+  --font-mono: var(--font-mono-family);
+
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-muted-ink: var(--muted-ink);
+  --color-amber: var(--amber);
+  --color-turmeric: var(--turmeric);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-red: var(--red);
+  --color-line: var(--line);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --font-display-family: "Anton", "Inter", sans-serif;
+  --font-body-family: "Inter", "Noto Sans Tamil", sans-serif;
+  --font-mono-family: "JetBrains Mono", monospace;
+
+  --paper: oklch(0.9538 0.02 84.59);
+  --cream: oklch(0.9743 0.0143 84.58);
+  --ink: oklch(0.2308 0.0174 74.72);
+  --muted-ink: oklch(0.5011 0.0316 72.4);
+  --amber: oklch(0.6494 0.1253 68.71);
+  --turmeric: oklch(0.7588 0.1436 79.97);
+  --green: oklch(0.4281 0.0662 154.87);
+  --green-soft: oklch(0.5352 0.075 152.51);
+  --red: oklch(0.5209 0.1579 29.21);
+  --line: oklch(0.2308 0.0174 74.72 / 13%);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--cream);
+  --card-foreground: var(--ink);
+  --popover: var(--cream);
+  --popover-foreground: var(--ink);
+  --primary: var(--green);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.9538 0.02 84.59);
+  --muted-foreground: var(--muted-ink);
+  --accent: var(--amber);
+  --accent-foreground: var(--cream);
+  --destructive: var(--red);
+  --destructive-foreground: var(--cream);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--green);
+  --chart-1: var(--green);
+  --chart-2: var(--amber);
+  --chart-3: var(--turmeric);
+  --chart-4: var(--green-soft);
+  --chart-5: var(--red);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body-family);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@keyframes rr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility rr-rise {
+  animation: rr-rise 0.5s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+/* Printable entitlement slip */
+@media print {
+  body {
+    background: #fff;
+  }
+  .print-hide {
+    display: none !important;
+  }
+  .print-sheet {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
